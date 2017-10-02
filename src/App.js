@@ -13,7 +13,6 @@ class App extends Component {
     componentDidMount() {
         api.getAllOptions().then((options)=>{
             return this.setState(function(){
-                console.log(options);
                 return {
                     options: options,
                     loading: false
@@ -30,7 +29,7 @@ class App extends Component {
                     : options.map(function(option){
                         return <Message
                             key = {option.url}
-                            name={option.name}
+                            fuckOff ={option.name}
                             url={option.url}
                             fields = {option.fields}
                         />
