@@ -3,12 +3,9 @@ import Message from './components/Message';
 var api = require('./utils/api');
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            options: null,
-            loading: true
-        }
+    state = {
+        options: null,
+        loading: true
     }
     componentDidMount() {
         api.getAllOptions().then((options)=>{

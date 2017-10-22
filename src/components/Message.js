@@ -1,38 +1,31 @@
 import React, {Component} from  'react';
 var api = require('../utils/api');
 
-class Field extends Component {
-    constructor(props) {
-        super(props);
-    }
-    onFieldChange(e){
+function Field(props) {
+    function onFieldChange(e){
         var name = e.target.name;
         var value = e.target.value;
-        this.props.onChange(name, value);
+        props.onChange(name, value);
     }
-    render () {
         return (
                 <div>
-                    <label htmlFor="field">{this.props.field}</label>
+                    <label htmlFor="field">{props.field}</label>
                     <input type="text"
-                        name={this.props.field}
-                        placeholder={this.props.field}
-                        onChange = {this.onFieldChange.bind(this)}/>
+                        name={props.field}
+                        placeholder={props.field}
+                        onChange = {onFieldChange}/>
                 </div>
                 );
-    }
 }
 
 class Message extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             message: '',
+            loading: false,
             fields: {}
         };
-        this.onChange = this.onChange.bind(this);
-    }
-    onChange(field, value){
+
+    onChange = (field, value) =>{
         var newField = field;
         var fields = this.state.fields;
         fields[newField] = value;
@@ -40,18 +33,28 @@ class Message extends Component {
             fields
         });
     }
-    handleClick(){
+    handleClick = () => {
         var paramString = '';
         for (var field in this.state.fields) {
             paramString+= '/' + this.state.fields[field];
         }
-        console.log(paramString);
+        this.setState({
+            loading: true
+        });
+        api.getMessage(this.props.url, paramString).then((message)=>{
+            this.setState({
+                message: message,
+                loading: false
+            });
+        })
     }
     render(){
         return (
                 <div>
                     <h3>{this.props.fuckOff}</h3>
                     <p>{this.props.url}</p>
+                    {this.state.loading ? <p>Loading...</p> :
+                            <p>{this.state.message.message}{this.state.message.subtitle}</p>}
                     <ul>
                     {
                         this.props.fields.map(function(field){
@@ -64,7 +67,7 @@ class Message extends Component {
                         }.bind(this))
                     }
                     </ul>
-                    <button onClick={this.handleClick.bind(this)}>Tell your friends to FUCK OFF!</button>
+                    <button onClick={this.handleClick}>Tell your friends to FUCK OFF!</button>
                 </div>
         )
     }
