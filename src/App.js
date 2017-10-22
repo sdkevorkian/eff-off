@@ -20,17 +20,18 @@ class App extends Component {
     render() {
         var options = this.state.options;
         return (
-            <div className="App">
+            <div className="App container">
                 <h1>Eff Off</h1>
-                {this.state.loading ? <h2>loading...</h2>
-                    : options.map(function(option){
-                        return <Message
-                            key = {option.url}
-                            fuckOff ={option.name}
-                            url={option.url}
-                            fields = {option.fields}
-                        />
-                    })}
+                <div className="row">
+                    {this.state.loading ? <h2>loading...</h2>
+                        : options.map(function(option){
+                            return <Message
+                                key = {option.url}
+                                fuckOff ={option.name}
+                                url={option.url}
+                                fields = {option.fields} />
+                        })}
+                    </div>
             </div>
         );
     }

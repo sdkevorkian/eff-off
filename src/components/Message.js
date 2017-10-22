@@ -50,7 +50,7 @@ class Message extends Component {
     }
     render(){
         return (
-                <div>
+                <div className="col-sm-4 message">
                     <h3>{this.props.fuckOff}</h3>
                     <p>{this.props.url}</p>
                     {this.state.loading ? <p>Loading...</p> :
@@ -67,7 +67,9 @@ class Message extends Component {
                         }.bind(this))
                     }
                     </ul>
-                    <button onClick={this.handleClick}>Tell your friends to FUCK OFF!</button>
+                    <button
+                        onClick={this.handleClick}
+                        className="btn btn-info">Tell your friends to FUCK OFF!</button>
                 </div>
         )
     }
