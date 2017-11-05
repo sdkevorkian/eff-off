@@ -13,7 +13,7 @@ function Field(props) {
         }
     }
         return (
-                <div>
+                <div className="field">
                     <label htmlFor="field">{props.field}</label>
                     <input type="text"
                         name={props.field}
