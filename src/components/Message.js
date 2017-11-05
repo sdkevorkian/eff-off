@@ -7,13 +7,19 @@ function Field(props) {
         var value = e.target.value;
         props.onChange(name, value);
     }
+    function handleKeyPress(e){
+        if (e.charCode===13){
+            props.loadMessage();
+        }
+    }
         return (
                 <div>
                     <label htmlFor="field">{props.field}</label>
                     <input type="text"
                         name={props.field}
                         placeholder={props.field}
-                        onChange = {onFieldChange}/>
+                        onChange = {onFieldChange}
+                        onKeyPress={handleKeyPress}/>
                 </div>
                 );
 }
@@ -22,7 +28,8 @@ class Message extends Component {
     state = {
             message: '',
             loading: false,
-            fields: {}
+            fields: {},
+            error: null
         };
 
     onChange = (field, value) =>{
@@ -33,28 +40,36 @@ class Message extends Component {
             fields
         });
     }
-    handleClick = () => {
+    loadMessage = () => {
         var paramString = '';
         for (var field in this.state.fields) {
             paramString+= '/' + this.state.fields[field];
         }
-        this.setState({
-            loading: true
-        });
-        api.getMessage(this.props.url, paramString).then((message)=>{
+        if (paramString===''){
             this.setState({
-                message: message,
-                loading: false
+                error: 'Please fill out the fields below'
             });
-        })
+        } else {
+            this.setState({
+                loading: true,
+                error: null
+            });
+            api.getMessage(this.props.url, paramString).then((message)=>{
+                this.setState({
+                    message: message,
+                    loading: false
+                });
+            });
+        }
     }
     render(){
         return (
-                <div className="col-sm-4 message">
+                <div className="col-lg-4 col-sm-6 message">
                     <h3>{this.props.fuckOff}</h3>
                     <p>{this.props.url}</p>
                     {this.state.loading ? <p>Loading...</p> :
-                            <p>{this.state.message.message}{this.state.message.subtitle}</p>}
+                            <p className="message-body">{this.state.message.message}<span className="message-subtitle">{this.state.message.subtitle}</span></p>}
+                    {this.state.error ? <p className="error">{this.state.error}</p> : ''}
                     <ul>
                     {
                         this.props.fields.map(function(field){
@@ -62,14 +77,15 @@ class Message extends Component {
                                             <Field
                                                 field ={field.name}
                                                 onChange= {this.onChange}
+                                                loadMessage ={this.loadMessage}
                                                 />
                                         </li>;
                         }.bind(this))
                     }
                     </ul>
                     <button
-                        onClick={this.handleClick}
-                        className="btn btn-info">Tell your friends to FUCK OFF!</button>
+                        onClick={this.loadMessage}
+                        className="btn btn-info">Fuck 'em!</button>
                 </div>
         )
     }

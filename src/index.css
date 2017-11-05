@@ -1,8 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top: 1em;
   font-family: sans-serif;
   font-size: 18px;
+  color: #773344;
+  background-color: #FFF9B3;
 }
 
 * {
@@ -14,10 +17,30 @@ input {
     padding-left: 0.5em;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .message {
     margin: 1em 0;
     height: 100%;
-    min-height: 450px;
+    min-height: 500px;
+    background-color: #D6FFB7;
+    border: 15px solid #FFF9B3;
+    padding: 1em 0 0 1em;
 }
 
+.message-body {
+    font-size: 2em;
+}
 
+.message-subtitle {
+    display: block;
+    font-size: 1.25rem;
+    text-align: right;
+}
+
+.error {
+    color: red;
+}

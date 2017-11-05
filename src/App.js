@@ -20,8 +20,9 @@ class App extends Component {
     render() {
         var options = this.state.options;
         return (
-            <div className="App container">
+            <div className="App container-fluid">
                 <h1>Eff Off</h1>
+                <h2>Tell your friends to FUCK OFF!!</h2>
                 <div className="row">
                     {this.state.loading ? <h2>loading...</h2>
                         : options.map(function(option){
