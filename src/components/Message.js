@@ -1,4 +1,5 @@
 import React, {Component} from  'react';
+import Modal from './Modal.js';
 var api = require('../utils/api');
 
 function Field(props) {
@@ -29,7 +30,8 @@ class Message extends Component {
             message: '',
             loading: false,
             fields: {},
-            error: null
+            error: null,
+            showModal: false
         };
 
     onChange = (field, value) =>{
@@ -57,10 +59,18 @@ class Message extends Component {
             api.getMessage(this.props.url, paramString).then((message)=>{
                 this.setState({
                     message: message,
-                    loading: false
+                    loading: false,
+                    showModal: true
                 });
             });
         }
+    }
+    toggleModal = () =>{
+        this.setState(function(prevState){
+            return {
+                showModal: !prevState.showModal
+            }
+        });
     }
     render(){
         return (
@@ -68,7 +78,13 @@ class Message extends Component {
                     <h3>{this.props.fuckOff}</h3>
                     <p>{this.props.url}</p>
                     {this.state.loading ? <p>Loading...</p> :
-                            <p className="message-body">{this.state.message.message}<span className="message-subtitle">{this.state.message.subtitle}</span></p>}
+                            <Modal
+                                show={this.state.showModal}
+                                onClick={this.toggleModal}>
+                                <p className="message-body">
+                                    {this.state.message.message}
+                                    <span className="message-subtitle">{this.state.message.subtitle}</span></p>
+                            </ Modal>}
                     {this.state.error ? <p className="error">{this.state.error}</p> : ''}
                     <ul>
                     {

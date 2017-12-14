@@ -35,10 +35,9 @@ label {
 input {
     display: block;
     padding-left: 0.5em;
-    /*background-color: #FFF9B3;*/
+    background-color: #FFF9B3;
+    border: 1px solid #773344;
     padding: 6px;
-    border: none;
-
 }
 
 ul {
@@ -47,11 +46,10 @@ ul {
 }
 
 .message {
-    height: 100%;
-    min-height: 500px;
+    height: auto;
     background-color: #D6FFB7;
     border: 15px solid #FFF9B3;
-    padding: 1em 0.5em 0 1em;
+    padding: 1em 0.5em 1em 1em;
 }
 
 .message-body {
@@ -66,4 +64,30 @@ ul {
 
 .error {
     color: red;
+}
+
+.backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.6);
+      padding: 50px;
+      height: 500%;
+      width: 100%;
+      overflow: auto;
+      z-index: 1;
+}
+
+.modal-message {
+      background: #FFF9B3;
+      border-radius: 5px;
+      max-width: 500px;
+      height: auto;
+      margin: 0 auto;
+      padding: 30px;
+}
+
+.btn-close {
+    background-color: #D6FFB7;
+    border: 1px solid  #000;
 }
