@@ -73,6 +73,7 @@ class Message extends Component {
         });
     }
     render(){
+        var text=this.state.message.message + this.state.message.subtitle;
         return (
                 <div className="col-lg-4 col-sm-6 message">
                     <div className="message-inner">
@@ -81,7 +82,8 @@ class Message extends Component {
                         {this.state.loading ? <p>Loading...</p> :
                                 <Modal
                                     show={this.state.showModal}
-                                    onClick={this.toggleModal}>
+                                    onClick={this.toggleModal}
+                                    text={text}>
                                     <p className="message-body">
                                         {this.state.message.message}
                                         <span className="message-subtitle">{this.state.message.subtitle}</span></p>

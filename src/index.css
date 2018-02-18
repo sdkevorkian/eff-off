@@ -24,15 +24,15 @@ body {
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 5em;
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 4em;
 }
 
 h3 {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 h1, h2, h3 {
@@ -51,9 +51,9 @@ label {
 input {
     display: block;
     padding-left: 0.5em;
-    background-color: #FFF9B3;
-    border: 1px solid #773344;
-    padding: 6px;
+    background-color: #f3ea5f;
+    border: 1px solid black;
+    padding: 12px;
     width: 100%;
 }
 
@@ -74,7 +74,7 @@ ul {
 }
 .message-inner {
     padding: 1em;
-    border: 4px dotted #FFF9B3;
+    border: 4px dotted #f3ea5f;
 }
 .message-body {
     font-size: 1.5em;
@@ -104,9 +104,10 @@ ul {
 }
 
 .modal-message {
-      background: #FFF9B3;
+      background: #f3ea5f;
       border-radius: 5px;
-      max-width: 500px;
+      max-width: 80vw;
+      min-height: 25vh;
       height: auto;
       margin: 0 auto;
       padding: 30px;
@@ -119,10 +120,17 @@ ul {
 }
 
 .btn-open {
-    background-color: #2bd1fc;
+    background-color:   #c04df9;
 }
 
 .btn-close {
       background-color: #D6FFB7;
-      border: 1px solid  #000;
+}
+
+.btn-share {
+    background-color: #2bd1fc;
+    margin: 0 12px;
+}
+a {
+  color: white;
 }
