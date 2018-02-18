@@ -75,33 +75,35 @@ class Message extends Component {
     render(){
         return (
                 <div className="col-lg-4 col-sm-6 message">
-                    <h3>{this.props.fuckOff}</h3>
-                    <p>{this.props.url}</p>
-                    {this.state.loading ? <p>Loading...</p> :
-                            <Modal
-                                show={this.state.showModal}
-                                onClick={this.toggleModal}>
-                                <p className="message-body">
-                                    {this.state.message.message}
-                                    <span className="message-subtitle">{this.state.message.subtitle}</span></p>
-                            </ Modal>}
-                    {this.state.error ? <p className="error">{this.state.error}</p> : ''}
-                    <ul>
-                    {
-                        this.props.fields.map(function(field){
-                            return <li key={field.field}>
-                                            <Field
-                                                field ={field.name}
-                                                onChange= {this.onChange}
-                                                loadMessage ={this.loadMessage}
-                                                />
-                                        </li>;
-                        }.bind(this))
-                    }
-                    </ul>
-                    <button
-                        onClick={this.loadMessage}
-                        className="btn btn-info">Fuck 'em!</button>
+                    <div className="message-inner">
+                        <h3>{this.props.fuckOff}</h3>
+                        {/*<p>{this.props.url}</p> */}
+                        {this.state.loading ? <p>Loading...</p> :
+                                <Modal
+                                    show={this.state.showModal}
+                                    onClick={this.toggleModal}>
+                                    <p className="message-body">
+                                        {this.state.message.message}
+                                        <span className="message-subtitle">{this.state.message.subtitle}</span></p>
+                                </ Modal>}
+                        {this.state.error ? <p className="error">{this.state.error}</p> : ''}
+                        <ul>
+                        {
+                            this.props.fields.map(function(field){
+                                return <li key={field.field}>
+                                                <Field
+                                                    field ={field.name}
+                                                    onChange= {this.onChange}
+                                                    loadMessage ={this.loadMessage}
+                                                    />
+                                            </li>;
+                            }.bind(this))
+                        }
+                        </ul>
+                        <button
+                            onClick={this.loadMessage}
+                            className="btn btn-lg btn-open">Fuck 'em!</button>
+                    </div>
                 </div>
         )
     }

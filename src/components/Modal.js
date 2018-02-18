@@ -10,7 +10,7 @@ class Modal extends Component {
                 <div className="modal-message">
                     {this.props.children}
                     <button
-                        className="btn btn-close"
+                        className="btn btn-lg btn-close"
                         onClick={this.props.onClick}>close</button>
                 </div>
             </div>

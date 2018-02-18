@@ -4,12 +4,23 @@ body {
   padding-top: 1em;
   font-family: sans-serif;
   font-size: 18px;
-  color: #773344;
-  background-color: #FFF9B3;
+  color: #ff48c4;
+  background-color: #000;
+  font-family: 'prstart';
 }
 
 * {
     box-sizing: border-box;
+}
+
+@font-face{
+  font-family: 'arcade';
+  src: url(./fonts/arcade.ttf);
+}
+
+@font-face{
+  font-family: 'prstart';
+  src: url(./fonts/prstart.ttf);
 }
 
 h1 {
@@ -24,8 +35,13 @@ h3 {
     font-size: 2em;
 }
 
+h1, h2, h3 {
+  font-family: 'arcade';
+}
+
 p, .field {
     margin: 10px 0;
+    line-height: 1.2em;
 }
 
 label {
@@ -38,6 +54,12 @@ input {
     background-color: #FFF9B3;
     border: 1px solid #773344;
     padding: 6px;
+    width: 100%;
+}
+
+input,
+input::placeholder {
+    font-family: 'prstart';
 }
 
 ul {
@@ -47,11 +69,13 @@ ul {
 
 .message {
     height: auto;
-    background-color: #D6FFB7;
-    border: 15px solid #FFF9B3;
+    background-color: #000;
     padding: 1em 0.5em 1em 1em;
 }
-
+.message-inner {
+    padding: 1em;
+    border: 4px dotted #FFF9B3;
+}
 .message-body {
     font-size: 1.5em;
 }
@@ -64,6 +88,7 @@ ul {
 
 .error {
     color: red;
+    height: auto;
 }
 
 .backdrop {
@@ -87,7 +112,17 @@ ul {
       padding: 30px;
 }
 
+.btn {
+    color: black;
+    border-radius: 0;
+    font-family: 'prstart';
+}
+
+.btn-open {
+    background-color: #2bd1fc;
+}
+
 .btn-close {
-    background-color: #D6FFB7;
-    border: 1px solid  #000;
+      background-color: #D6FFB7;
+      border: 1px solid  #000;
 }
