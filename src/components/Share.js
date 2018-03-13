@@ -1,19 +1,15 @@
 import React, {Component} from  'react';
 
-class Share extends Component {
+class ShareButton extends Component {
     render(){
     var text = encodeURIComponent(this.props.text);
+    var url = this.props.url + text;
         return (
-            <div className="float-right">
-                <button className="btn btn-lg btn-share">
-                    <a href={"https://twitter.com/intent/tweet?url=&text="+text}><i className="fa-2x fab fa-twitter"></i></a>
-                </button>
-                <button className="btn btn-lg btn-share">
-                    <a href={"https://facebook.com/sharer.php?u=test.com&quote="+text}><i className="fa-2x fab fa-facebook-square"></i></a>
-                </button>
-            </div>
+            <button className={"btn btn-lg btn-share col-xs-1 col-sm-2 " +this.props.classes}>
+                <a href={url}><i className={"fa-2x fab fa-"+this.props.icon}></i></a>
+            </button>
         )
     }
 }
 
-export default Share;
+export default ShareButton;

@@ -78,6 +78,7 @@ ul {
 }
 .message-body {
     font-size: 1.5em;
+    margin: 1em;
 }
 
 .message-subtitle {
@@ -111,7 +112,14 @@ ul {
       height: auto;
       margin: 0 auto;
       padding: 30px;
+      /*position: relative;*/
 }
+/*
+.share-toggle {
+      bottom: 30px;
+      position: absolute;
+      right: 30px;
+}*/
 
 .btn {
     color: black;
@@ -124,13 +132,25 @@ ul {
 }
 
 .btn-close {
-      background-color: #D6FFB7;
+    background-color: #D6FFB7;
 }
 
 .btn-share {
     background-color: #2bd1fc;
-    margin: 0 12px;
+    padding: 12px;
 }
+
 a {
-  color: white;
+    color: white;
+}
+
+@media (max-width: 700px){
+    body{
+      font-size: 14px;
+    }
+
+/*    .btn-share{
+      font-size: 1em;
+      margin: 0 2px;
+    }*/
 }

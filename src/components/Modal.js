@@ -1,5 +1,5 @@
 import React, {Component} from  'react';
-import Share from './Share.js';
+import ShareButton from './Share.js';
 
 class Modal extends Component {
     render(){
@@ -10,10 +10,15 @@ class Modal extends Component {
             <div className="backdrop">
                 <div className="modal-message">
                     {this.props.children}
-                    <button
-                        className="btn btn-lg btn-close float-left"
-                        onClick={this.props.onClick}>close</button>
-                <Share text={this.props.text} />
+                    <div>
+                    </div>
+                    <div className="row">
+                        <button
+                            className="btn btn-lg btn-close col-xs-1 col-sm-4"
+                            onClick={this.props.onClick}>close</button>
+                        <ShareButton text={this.props.text} url="https://twitter.com/intent/tweet?url=&text=" icon="twitter" classes="offset-sm-3"/>
+                        <ShareButton text={this.props.text} url="https://facebook.com/sharer.php?u=test.com&quote=" icon="facebook-square" classes="offset-sm-1"/>
+                    </div>
                 </div>
             </div>
         )
